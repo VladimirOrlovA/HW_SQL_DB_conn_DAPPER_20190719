@@ -161,7 +161,7 @@ namespace HW_SQL_DB_conn_DAPPER_20190719
             //selectCustomerByGender("f");
             //insertToTableCustomer("Николай", "Смирнов", "smirnov@mail.ru", "qwerty1", "Сейфулина, 510 - 35", 87019548651, "m", new DateTime(1985, 03, 08), new DateTime(2019, 07, 25), 10);
             //deleteFromCustomerById(22);
-   
+      
             Console.ReadKey();
         }
     }
