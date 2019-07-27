@@ -102,66 +102,44 @@ namespace HW_SQL_DB_conn_DAPPER_20190719
             Console.WriteLine("DAPPER - for INSERT");
             using (IDbConnection db = new SqlConnection(conn_str))
             {
-                db.Query<InsertCustomer>("p_insert_to_customer", new
+                db.Execute("p_insert_to_customer", new
                 {
-                    first_name = first_name,
-                    last_name = last_name,
-                    email = email,
-                    password = password,
-                    address = address,
-                    phone = phone,
-                    gender = gender,
-                    birthdate = birthdate,
-                    reg_date = reg_date,
-                    bonus_percent = bonus_percent
+                    first_name,
+                    last_name,
+                    email,
+                    password,
+                    address,
+                    phone,
+                    gender,
+                    birthdate,
+                    reg_date,
+                    bonus_percent
 
                 }, commandType: CommandType.StoredProcedure);
 
             }
         }
 
-        class InsertCustomer
-        {
-            public string first_name { get; set; }
-            public string last_name { get; set; }
-            public string email { get; set; }
-            public string password { get; set; }
-            public string address { get; set; }
-            public long phone { get; set; }
-            public string gender { get; set; }
-            public DateTime birthdate { get; set; }
-            public DateTime reg_date { get; set; }
-            public int bonus_percent { get; set; }
-        }
-
         //TASK 3
-        private static void deleteFromCustomerById (int customer_id)
+        private static void deleteFromCustomerById(int customer_id)
         {
             Console.WriteLine("DAPPER - for DELETE");
             using (IDbConnection db = new SqlConnection(conn_str))
             {
-                db.Query<InsertCustomer>("p_delete_from_Customer_by_id", new
-                {
-                    customer_id = customer_id
-                }, commandType: CommandType.StoredProcedure);
-
+                db.Execute("p_delete_from_Customer_by_id", new { customer_id },
+                    commandType: CommandType.StoredProcedure);
             }
-        }
-
-        class DeleteCustomer
-        {
-            public int customer_id { get; set; }
         }
 
         static void Main(string[] args)
         {
             //Dapper_sel();
             //getProductCat(2);
-            
+
             //selectCustomerByGender("f");
             //insertToTableCustomer("Николай", "Смирнов", "smirnov@mail.ru", "qwerty1", "Сейфулина, 510 - 35", 87019548651, "m", new DateTime(1985, 03, 08), new DateTime(2019, 07, 25), 10);
-            //deleteFromCustomerById(22);
-      
+            //deleteFromCustomerById(23);
+
             Console.ReadKey();
         }
     }
